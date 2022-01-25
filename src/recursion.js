@@ -7,31 +7,95 @@
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
 var factorial = function(n) {
+    let result = n
+    if(n === 0){
+        return 1
+    }
+
+    if( n === 1){
+        return result 
+    }
+
+    if(n < 0){
+        return null
+    }
+
+    return result *= factorial(n - 1)
 };
 
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
+    if(array.length === 0){
+        return 0
+    }
+    let result = array[0]
+
+    return result += sum(array.slice(1))
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+    if(n === 0){
+        return true
+    }
+
+    if(n === 1){
+        return false
+    }
+    n = Math.abs(n)
+    return isEven(n - 2)
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+    if(n === 0){
+        return 0
+    }
+    if(n === 1 || n === -1){
+        return 0
+    }
+
+    if(n > 0){
+        let result = n - 1
+        return result += sumBelow(n - 1)
+    }
+    
+    if(n < 0){
+        let result = n + 1
+        return result += sumBelow(n + 1)
+    }
+    
 };
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+    let first = x + 1
+    let second = x - 1
+    if(x === y || y - x === 1 || x - y === 1){
+        return []
+    } else
+   if(y - x === 2){
+       return [first]
+   } else if(x > y){
+        let arr = range(x - 1, y)
+        arr.unshift(second)
+        return arr
+    } else {
+       let arr = range(x + 1, y)
+       arr.unshift(first)
+       return arr
+   }
+   
 };
 
 // 7. Compute the exponent of a number.
@@ -47,10 +111,27 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+    if(n ===  1){
+        return true
+    }
+    if(n === 0){
+        return false
+    }
+    if(n < 1){
+        return false
+    }
+    return powerOfTwo(n/2)
 };
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
+    
+    if(string.length === 0){
+        return ''
+    }
+    let n = string[string.length - 1]
+
+    return n += reverse(string.slice(0, string.length-1))
 };
 
 // 10. Write a function that determines if a string is a palindrome.
